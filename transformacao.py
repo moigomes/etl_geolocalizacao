@@ -3,12 +3,13 @@ from pygeocoder import Geocoder
 
 class Transformacao():
 
-    def __init__(self, dados):
-
-        self.__dados = dados
-
+    def __init__(self, key_google_maps='AIzaSyBhFuJK5JqixSDEaKPGjUmAoARcpntgU-c'):
+        self.__geocoder = Geocoder(api_key=key_google_maps)
 
 
 
-# results = Geocoder(api_key='AIzaSyBhFuJK5JqixSDEaKPGjUmAoARcpntgU-c').reverse_geocode(-30.04982864, -51.20150245)
-# print(results[0])
+    def get_edereco(self, coordenadas: [[float, float]]) -> dict:
+        teste = self.__geocoder.reverse_geocode(coordenadas[0], coordenadas[1])
+        print(type(teste))
+        return teste
+

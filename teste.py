@@ -1,8 +1,18 @@
+import time
+
+
 from extracao import Extracao
+from transformacao import Transformacao
 
 
-dados = Extracao('data_points_20180101.txt').get_dados()
+coordenadas: list = Extracao('data_points_20180101.txt').get_coordenadas()
 
 
+transformacao = Transformacao()
 
-print(dados)
+for par_coordenadas in coordenadas:
+    teste = transformacao.get_edereco(par_coordenadas)
+
+    print(teste)
+
+    break

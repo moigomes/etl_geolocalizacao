@@ -13,6 +13,9 @@ transformacao = Transformacao()
 for par_coordenadas in coordenadas:
     teste = transformacao.get_edereco(par_coordenadas)
 
+    print('-------------------------')
     print(teste)
+    print('-------------------------')
 
-    break
+
+

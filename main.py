@@ -12,9 +12,9 @@ for pair_of_coordinates in list_of_coordinates:
     adress = transform.get_adress(pair_of_coordinates)
     load.save(adress)
 
-    # print('-------------------------')
-    # print(adress)
-    # print('-------------------------')
+    print('-------------------------')
+    print(adress)
+    print('-------------------------')
 
 
 

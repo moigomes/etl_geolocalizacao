@@ -1,7 +1,7 @@
 
-from extract import Extract
-from load import Load
-from transform import Transform
+from core.extract import Extract
+from core.load import Load
+from core.transform import Transform
 
 
 list_of_coordinates = Extract('data_points_20180101.txt').get_list_of_coordinates()

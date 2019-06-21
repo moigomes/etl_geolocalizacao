@@ -8,6 +8,11 @@ class Extract:
         self.__temporary_list = [0, 0]
 
     def get_list_of_coordinates(self):
+        """
+        :return
+        retorna uma lista de coordenadas
+
+        """
         for line in self.__text:
             self.__check_line(line)
 

@@ -1,5 +1,5 @@
-def create_table_results():
-    return """CREATE TABLE IF NOT EXISTS results (
+def criar_tabela_resultados():
+    return """CREATE TABLE IF NOT EXISTS resultados (
                                         id integer PRIMARY KEY AUTOINCREMENT,
                                         latitude text,
                                         longitude text,
@@ -13,10 +13,10 @@ def create_table_results():
                                     );"""
 
 
-def insert_results(adress):
-    return f"""INSERT INTO results
+def insert_resultados(endereco: dict):
+    return f"""INSERT INTO resultados
                     (latitude, longitude, rua, numero, bairro, cidade, cep, uf, pais)
                 VALUES
-                    ('{adress["latitude"]}', '{adress["longitude"]}', '{adress["rua"]}', 
-                        '{adress["numero"]}', '{str(adress["bairro"]).replace("'", " ")}', '{adress["cidade"]}',
-                        '{adress["cep"]}', '{adress["uf"]}', '{adress["pais"]}');"""
+                    ('{endereco["latitude"]}', '{endereco["longitude"]}', '{endereco["rua"]}', 
+                        '{endereco["numero"]}', '{str(endereco["bairro"]).replace("'", " ")}', '{endereco["cidade"]}',
+                        '{endereco["cep"]}', '{endereco["uf"]}', '{endereco["pais"]}');"""

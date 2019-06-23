@@ -1,40 +1,33 @@
+import logging
+
+
 class Extract:
 
-    def __init__(self, file_name):
-        self.__text_file = open(f'resources/{file_name}', 'r')
-        self.__text = self.__text_file.readlines()
-        self.__text_file.close()
-        self.__list_of_coordinates = []
-        self.__temporary_list = [0, 0]
+    def __init__(self, nome_arquivo_txt: str):
+        self.__nome_do_arquivo_txt = nome_arquivo_txt
 
-    def get_list_of_coordinates(self):
-        """
-        :return
-        retorna uma lista de coordenadas
+    def get_lista_de_coordenadas(self) -> list:
+        lista_de_cordenadas = []
+        arquivo_de_texto = self.abrir_arquivo_de_texto()
+        linhas: list = arquivo_de_texto.readlines()
+        arquivo_de_texto.close()
 
-        """
-        for line in self.__text:
-            self.__check_line(line)
+        for linha in linhas:
+            if 'Latitude:' in linha:
+                lista_de_cordenadas.append([Extract.get_valor_coordenada(linha)])
+            if 'Longitude:' in linha:
+                lista_de_cordenadas[-1].append(Extract.get_valor_coordenada(linha))
 
-            if self.__is_a_pair_of_coordinates(self.__temporary_list):
-                self.__list_of_coordinates.append(self.__temporary_list.copy())
-                self.__temporary_list = [0, 0]
+        return lista_de_cordenadas
 
-        return self.__list_of_coordinates
+    def abrir_arquivo_de_texto(self):
+        try:
+            return open(self.__nome_do_arquivo_txt, 'r')
 
-    def __check_line(self, line):
-        if 'Latitude:' in line:
-            self.__temporary_list[0] = self.__get_coordinate_value(line)
-        if 'Longitude:' in line:
-            self.__temporary_list[1] = self.__get_coordinate_value(line)
+        except FileNotFoundError as erro:
+            logging.error(f'Não foi possivel ler o arquivo! - {erro}')
+            exit()
 
     @staticmethod
-    def __is_a_pair_of_coordinates(list):
-        if list[0] != 0 and list[1] != 0:
-            return True
-
-        return False
-
-    @staticmethod
-    def __get_coordinate_value(line):
-        return line.split(' ')[4].replace('\n', '')
+    def get_valor_coordenada(linha: str) -> float:
+        return float(linha.split(' ')[4].replace('\n', ''))

@@ -1,15 +1,15 @@
 def criar_tabela_resultados():
     return """CREATE TABLE IF NOT EXISTS resultados (
                                         id integer PRIMARY KEY AUTOINCREMENT,
-                                        latitude text,
-                                        longitude text,
-                                        rua text,
-                                        numero text,
-                                        bairro text,
-                                        cidade text,
-                                        cep text,
-                                        uf text,
-                                        pais text
+                                        latitude VARCHAR(20),
+                                        longitude VARCHAR(20),
+                                        rua VARCHAR(100),
+                                        numero VARCHAR(15),
+                                        bairro VARCHAR(50),
+                                        cidade VARCHAR(50),
+                                        cep VARCHAR(50),
+                                        uf VARCHAR(10),
+                                        pais VARCHAR(100)
                                     );"""
 
 

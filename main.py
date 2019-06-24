@@ -21,11 +21,11 @@ while True:
     logging.info(f'Escaneando diretório: ({file_tools.diretorio_arquivos})')
     arquivos = file_tools.escanear_diretorio(intervalo=0.5)
 
-    if len(arquivos) > 1:
-        logging.info(f'Arquivo txt encontrado: ({arquivos[1]})')
+    if len(arquivos) > 0:
+        logging.info(f'Arquivo txt encontrado: ({arquivos[0]})')
 
-        lista_de_coordenadas = Extract('resources/' + arquivos[1]).get_lista_de_coordenadas()
-        logging.info(f'Extraído conteúdo do arquivo: ({arquivos[1]})')
+        lista_de_coordenadas = Extract('resources/' + arquivos[0]).get_lista_de_coordenadas()
+        logging.info(f'Extraído conteúdo do arquivo: ({arquivos[0]})')
 
         for latitude, longitude in lista_de_coordenadas:
             endereco: dict = transform.get_endereco(latitude, longitude)
@@ -34,8 +34,8 @@ while True:
             print(endereco)
             print('-' * 150)
 
-        logging.info(f'Conteúdo do arquivo: ({arquivos[1]}), Extraído, Transformado e carregado na base de dados!')
-        file_tools.mover_arquivo(arquivos[1])
+        logging.info(f'Conteúdo do arquivo: ({arquivos[0]}), Extraído, Transformado e carregado na base de dados!')
+        file_tools.mover_arquivo(arquivos[0])
 
     else:
         logging.warning('Nenum arquivo txt encontrado!')

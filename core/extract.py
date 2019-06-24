@@ -31,3 +31,6 @@ class Extract:
     @staticmethod
     def get_valor_coordenada(linha: str) -> float:
         return float(linha.split(' ')[4].replace('\n', ''))
+
+
+

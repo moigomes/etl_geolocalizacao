@@ -17,6 +17,6 @@ def insert_resultados(endereco: dict):
     return f"""INSERT INTO resultados
                     (latitude, longitude, rua, numero, bairro, cidade, cep, uf, pais)
                 VALUES
-                    ('{endereco["latitude"]}', '{endereco["longitude"]}', '{endereco["rua"]}', 
-                        '{endereco["numero"]}', '{str(endereco["bairro"]).replace("'", " ")}', '{endereco["cidade"]}',
+                    ('{endereco["latitude"]}', '{endereco["longitude"]}', '{str(endereco["rua"]).replace("'", " ")}', 
+                        '{endereco["numero"]}', '{str(endereco["bairro"]).replace("'", " ")}', '{str(endereco["cidade"]).replace("'", " ")}',
                         '{endereco["cep"]}', '{endereco["uf"]}', '{endereco["pais"]}');"""

@@ -24,4 +24,11 @@ class Load:
 
         except Exception as erro:
             logging.error(f'Erro ao inserir endereço no banco de dados! - {erro}')
-            exit()
+            raise
+
+
+
+
+
+
+

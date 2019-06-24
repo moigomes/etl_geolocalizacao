@@ -39,3 +39,7 @@ while True:
 
     else:
         logging.warning('Nenum arquivo txt encontrado!')
+
+
+
+

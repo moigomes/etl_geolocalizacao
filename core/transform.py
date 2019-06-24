@@ -1,5 +1,4 @@
 import logging
-
 import geocoder
 
 
@@ -14,7 +13,6 @@ class Transform:
                                                          method='reverse',
                                                          key=self.__key_google_maps,
                                                          language='pt')
-
             return {'latitude': latitude,
                     'longitude': longitude,
                     'rua': dados_retornados.street_long,

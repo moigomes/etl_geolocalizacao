@@ -1,9 +1,8 @@
-#####20 Jun 2019
-######Moisés Gomes – moigomes@gmail.com
+##### 20 Jun 2019 - Moisés Gomes – moigomes@gmail.com
 
-#Script desenvolvido em Python 3.6 destinado a execução de uma rotina ETL
-#####A sigla ETL vem do inglês Extract-Transform-Load e visa trabalhar com toda a parte de extração de dados de fontes externas, transformação para atender às necessidades de negócios e carga dos dados dentro do Data Warehouse.
-###Extract: É a coleta de dados dos sistemas de origem
+# Script desenvolvido em Python 3.6 destinado a execução de uma rotina ETL
+##### A sigla ETL vem do inglês Extract-Transform-Load e visa trabalhar com toda a parte de extração de dados de fontes externas, transformação para atender às necessidades de negócios e carga dos dados dentro do Data Warehouse.
+### Extract: É a coleta de dados dos sistemas de origem
 - A fonte de dados do processo em questão, são arquivos de texto com coordenadas geográficas no
 formato exibido abaixo:
 ```sh
@@ -16,25 +15,25 @@ Distance: 2.2959 km  Bearing: 137.352°
 - O método ‘get_lista_de_coordenadas()’ retorna uma lista com listas de pares de coordenadas.
 [[latitude, longitude] ... ]
 
-###Transform: Limpeza, Ajustes e Consolidação dos dados
+### Transform: Limpeza, Ajustes e Consolidação dos dados
 - A classe Transform é a responsável por ajustar e enriquecer os dados
 - O método ‘get_endereco()’ recebe as coordenadas (Latitude e Longitude) e com o auxílio da lib
 ‘geocoder’ que ultiliza a API do Google de Geocode Reverso, retorna um dicionário com os dados do
 endereço do local.
 
-###Load: Consiste em fisicamente estruturar e carregar os dados para dentro da camada de apresentação seguindo o modelo dimensional.
+### Load: Consiste em fisicamente estruturar e carregar os dados para dentro da camada de apresentação seguindo o modelo dimensional.
 - A classe Load faz esse trabalho.
 - O método ‘salvar’ recebe um dicionário com os dados de endereço e persiste as informações na
 base de dados Sqlite3.
 
-###Script main.py
+### Script main.py
 - Este script consome as classes mencionadas anteriormente e procura por arquivos de textos
 dentro do diretório ‘resources/’. Ao encontrar, realiza o processo ETL e por fim, move o arquivo lido
 para a pasta ‘resources/arquivos_extraidos’.
 - Após isso, o programa continua procurando por arquivos na pasta e repetindo o processo até
 que seja encerrado manualmente (Crtl+c)
 
-###Configurando
+### Configurando
 - É preciso ter o Python 3.6 e PIP3 instalado.
 Caso não possua:
 - Para Linux(Ubuntu)
@@ -59,7 +58,7 @@ git clone https://gitlab.com/moigomes/etl.git
 - O banco de dados não precisa ser configurado pois utilizei o sqlite3. O Python já cria o arquivo .db
 e a tabela para a inserção dos resultados é criada automaticamente.
 
-###Executando:
+### Executando:
 - Acessar a pasta/repositório (etl) clonado anteriormente e rodar o ‘script main.py’
 ```sh
 python main.py

@@ -8,7 +8,7 @@ from utils import log_tools
 
 log_tools.ajustar_log()
 
-transform = Transform(key_google_maps='AIzaSyBhFuJK5JqixSDEaKPGjUmAoARcpntgU-c')
+transform = Transform(key_google_maps='key')
 
 load = Load()
 
